@@ -1,0 +1,21 @@
+﻿<div class="card card-block">
+    <h4 class="card-title">Create Joke</h4>
+    <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Enter the setup"
+               #q>
+    </div>
+    <div class="form-group" #z>
+        <input type="text"
+               class="form-control"
+               placeholder="Enter the punchline"
+               #a
+               (keyup)="keyUpTest($event)">
+    </div>
+    <button type="button"
+            class="btn btn-primary"
+            (click)="createJoke(q.value, a.value, z, a)">
+        Create
+    </button>
+</div>
