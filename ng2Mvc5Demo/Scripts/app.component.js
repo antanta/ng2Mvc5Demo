@@ -17,6 +17,13 @@ var Joke = /** @class */ (function () {
         this.answer = answer;
         this.hide = true;
     }
+    Joke.prototype.isFunnyJoke = function () {
+        var result = false;
+        if (this.question.substr(this.question.length - 2) == 'me') {
+            result = true;
+        }
+        return result;
+    };
     Joke.prototype.toggle = function () {
         this.hide = !this.hide;
     };
@@ -27,14 +34,13 @@ var JokeFormComponent = /** @class */ (function () {
         this.jokeCreated = new core_1.EventEmitter(); /* jokeCreated is event here */
     }
     JokeFormComponent.prototype.createJoke = function (question, answer, senderQ, senderA) {
-        debugger;
         this.jokeCreated.emit(new Joke(question, answer));
     };
     JokeFormComponent.prototype.keyUpTest = function (event) {
-        console.log(event.keyCode);
+        //console.log(event.keyCode);
     };
     JokeFormComponent.prototype.ngOnChanges = function (changes) {
-        console.log("ngOnChanges - data is " + changes);
+        //console.log(`ngOnChanges - data is ${changes}`);
     };
     __decorate([
         core_1.Output(),
@@ -56,10 +62,13 @@ var JokeComponent = /** @class */ (function () {
     function JokeComponent() {
     }
     JokeComponent.prototype.ngOnInit = function () {
-        console.log("joke init");
+        //console.log(`joke init`);
     };
     JokeComponent.prototype.ngOnChanges = function (changes) {
-        console.log("joke onChanges");
+        //console.log(`joke onChanges`);
+    };
+    JokeComponent.prototype.isFunnyJoke = function (param) {
+        return this.data.isFunnyJoke();
     };
     __decorate([
         core_1.Input('jokemaina'),
@@ -83,8 +92,14 @@ var JokeListComponent = /** @class */ (function () {
         ];
     }
     JokeListComponent.prototype.addJoke = function (joke) {
-        debugger; /* handles the event emiited fro the event emitter */
+        /* handles the event emiited fro the event emitter */
         this.jokes.unshift(joke);
+    };
+    JokeListComponent.prototype.ngAfterContentInit = function () {
+        //here we have the contentchildren
+    };
+    JokeListComponent.prototype.ngAfterViewInit = function () {
+        //here we have the viewchildren
     };
     __decorate([
         core_2.ViewChildren(JokeComponent),

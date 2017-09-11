@@ -26,3 +26,7 @@ textarea {
 .card {
     color: red;
 }
+
+.text-funny-joke {
+    font-style: italic;
+}

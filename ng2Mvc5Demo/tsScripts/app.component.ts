@@ -1,11 +1,20 @@
 import { Component, NgModule, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { SimpleChanges, OnChanges, OnInit } from '@angular/core';
-import { ViewChildren, ContentChildren, QueryList } from '@angular/core';
+import { ViewChildren, ContentChildren, QueryList, ViewChild, ContentChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit } from '@angular/core';
 
 class Joke {
     public question: string;
     public answer: string;
     public hide: boolean;
+
+    public isFunnyJoke(): boolean {
+        var result = false;
+        if (this.question.substr(this.question.length - 2) == 'me') {
+            result = true;
+        }
+        return result;
+    }
 
     constructor(question: string, answer: string) {
         this.question = question;
@@ -29,16 +38,15 @@ export class JokeFormComponent implements OnChanges {
     @Output() jokeCreated = new EventEmitter<Joke>();/* jokeCreated is event here */
 
     createJoke(question: string, answer: string, senderQ: any, senderA: any): void {
-        debugger;
         this.jokeCreated.emit(new Joke(question, answer));
     }
 
     keyUpTest(event): void {
-        console.log(event.keyCode);
+        //console.log(event.keyCode);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log(`ngOnChanges - data is ${changes}`);
+        //console.log(`ngOnChanges - data is ${changes}`);
     }
 }
 
@@ -49,10 +57,13 @@ export class JokeFormComponent implements OnChanges {
 export class JokeComponent implements OnInit, OnChanges {
     @Input('jokemaina') data: Joke; /* from the form prorp */
     ngOnInit(): void {
-        console.log(`joke init`);
+        //console.log(`joke init`);
     }
     ngOnChanges(changes: SimpleChanges) {
-        console.log(`joke onChanges`);
+        //console.log(`joke onChanges`);
+    }
+    isFunnyJoke(param: Joke): boolean {
+        return this.data.isFunnyJoke();
     }
 }
 
@@ -69,7 +80,7 @@ export class JokeComponent implements OnInit, OnChanges {
         <ng-content></ng-content>
         `
 })
-export class JokeListComponent {
+export class JokeListComponent implements AfterContentInit, AfterViewInit {
     jokes: Joke[];
 
     @ViewChildren(JokeComponent) jokeViewChildren: QueryList<JokeComponent>;
@@ -84,8 +95,15 @@ export class JokeListComponent {
     }
 
     addJoke(joke) {
-        debugger; /* handles the event emiited fro the event emitter */
+        /* handles the event emiited fro the event emitter */
         this.jokes.unshift(joke);
+    }
+
+    ngAfterContentInit(): void {
+        //here we have the contentchildren
+    }
+    ngAfterViewInit(): void {
+        //here we have the viewchildren
     }
 }
 

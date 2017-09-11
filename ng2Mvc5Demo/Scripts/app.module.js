@@ -11,6 +11,8 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
 var app_component_2 = require("./app.component");
+/* Custom directives */
+var jokeHoverDirective_1 = require("./directives/jokeHoverDirective");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -19,7 +21,8 @@ var AppModule = /** @class */ (function () {
             declarations: [app_component_1.AppComponent,
                 app_component_2.JokeComponent,
                 app_component_2.JokeListComponent,
-                app_component_2.JokeFormComponent
+                app_component_2.JokeFormComponent,
+                jokeHoverDirective_1.JokeHoverDirective
             ],
             imports: [platform_browser_1.BrowserModule],
             providers: [],
