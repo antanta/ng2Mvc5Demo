@@ -1,5 +1,6 @@
 ﻿<joke-list>
-
-    Maina content
-
+    <joke [jokemaina]="rootJoke">
+        <span class="questionClassSelector">{{ rootJoke.question }}?</span>
+        <h1 class="answerClassSelector">{{ rootJoke.answer }}</h1>
+    </joke>
 </joke-list>

@@ -1,5 +1,6 @@
 import { Component, NgModule, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { SimpleChanges, OnChanges, OnInit } from '@angular/core';
+import { ViewChildren, ContentChildren, QueryList } from '@angular/core';
 
 class Joke {
     public question: string;
@@ -41,6 +42,19 @@ export class JokeFormComponent implements OnChanges {
     }
 }
 
+@Component({
+    selector: 'joke',
+    templateUrl: '../Templates/components/joke.component.html'
+})
+export class JokeComponent implements OnInit, OnChanges {
+    @Input('jokemaina') data: Joke; /* from the form prorp */
+    ngOnInit(): void {
+        console.log(`joke init`);
+    }
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(`joke onChanges`);
+    }
+}
 
 @Component({
     selector: 'joke-list',
@@ -51,12 +65,15 @@ export class JokeFormComponent implements OnChanges {
           <h1 class="answerClassSelector">{{ j.answer }}</h1>
         </joke>
 
-        Content template
+        Content template joke:
         <ng-content></ng-content>
-          `
+        `
 })
 export class JokeListComponent {
     jokes: Joke[];
+
+    @ViewChildren(JokeComponent) jokeViewChildren: QueryList<JokeComponent>;
+    @ContentChildren(JokeComponent) jokeContentChildren: JokeComponent;
 
     constructor() {
         this.jokes = [
@@ -73,20 +90,6 @@ export class JokeListComponent {
 }
 
 @Component({
-    selector: 'joke',
-    templateUrl: '../Templates/components/joke.component.html'
-})
-export class JokeComponent implements OnInit, OnChanges {
-    @Input('jokemaina') data: Joke; /* from the form prorp */
-    ngOnInit(): void {
-        console.log(`joke init`);
-    }
-    ngOnChanges(changes: SimpleChanges) {
-        console.log(`joke onChanges`);
-    }
-}
-
-@Component({
     selector: 'my-app',
     templateUrl: '../Templates/app.component.html',
     styleUrls: [
@@ -94,4 +97,5 @@ export class JokeComponent implements OnInit, OnChanges {
     ]
 })
 export class AppComponent {
+    rootJoke: Joke = new Joke("A kid threw a lump of cheddar at me", "I thought 'That's not very mature'");
 }
