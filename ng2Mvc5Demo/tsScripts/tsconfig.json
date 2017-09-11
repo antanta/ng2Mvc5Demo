@@ -12,6 +12,7 @@
     "moduleResolution": "node",
     "lib": [ "es2015", "es2017", "dom" ]
   },
+  "compileOnSave": true,
   "exclude": [
     "node_modules" 
   ]
