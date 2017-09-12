@@ -13,24 +13,63 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var core_2 = require("@angular/core");
 var core_3 = require("@angular/core");
+var core_4 = require("@angular/core");
+var core_5 = require("@angular/core");
 var JokeHoverDirective = /** @class */ (function () {
     function JokeHoverDirective(el, renderer) {
         this.el = el;
         this.renderer = renderer;
-        setTimeout(function () {
-            $(el.nativeElement).fadeOut(1000);
-        });
+        this.isBold = false;
+        this.fadeDuration = 6000;
+        this.dirEl = $(el.nativeElement);
+        //console.log(that.fadeDuration);
+        //setTimeout(function () {
+        //    //console.log(that.fadeDuration);
+        //    $(el.nativeElement).fadeIn(that.fadeDuration);
+        //}, 100);
         // Value capturing
-        /*
-        (function (c) {
-            setTimeout(function () {
-                $(c).fadeOut(1000);
-            }, 100);
-        })(el.nativeElement);
-        */
+        //(function (c, d) {
+        //    setTimeout(function () {
+        //        debugger;
+        //        $(c).fadeIn(d);
+        //    });
+        //})(el.nativeElement, this.fadeDuration);
         //For all devices
         //renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'aliceblue');
     }
+    JokeHoverDirective.prototype.ngOnInit = function () {
+        if (this.config && this.config.fadeDuration) {
+            this.fadeDuration = this.config.fadeDuration;
+        }
+        //Animate
+        this.dirEl.fadeIn(this.fadeDuration);
+    };
+    JokeHoverDirective.prototype.onMouseOver = function () {
+        this.isBold = true;
+    };
+    JokeHoverDirective.prototype.onMouseOut = function () {
+        this.isBold = false;
+    };
+    __decorate([
+        core_2.Input(),
+        __metadata("design:type", HoverDirectiveConfig)
+    ], JokeHoverDirective.prototype, "config", void 0);
+    __decorate([
+        core_5.HostBinding('class.div-with-bold'),
+        __metadata("design:type", Boolean)
+    ], JokeHoverDirective.prototype, "isBold", void 0);
+    __decorate([
+        core_4.HostListener('mouseover'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], JokeHoverDirective.prototype, "onMouseOver", null);
+    __decorate([
+        core_4.HostListener('mouseout'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], JokeHoverDirective.prototype, "onMouseOut", null);
     JokeHoverDirective = __decorate([
         core_3.Directive({
             selector: "[ccJokeHover]" //namespace always
@@ -41,4 +80,9 @@ var JokeHoverDirective = /** @class */ (function () {
     return JokeHoverDirective;
 }());
 exports.JokeHoverDirective = JokeHoverDirective;
+var HoverDirectiveConfig = /** @class */ (function () {
+    function HoverDirectiveConfig() {
+    }
+    return HoverDirectiveConfig;
+}());
 //# sourceMappingURL=jokeHoverDirective.js.map

@@ -52,6 +52,9 @@ export class JokeFormComponent implements OnChanges {
 
 @Component({
     selector: 'joke',
+    styleUrls: [
+        '../Styles/components/joke.component.css'
+    ],
     templateUrl: '../Templates/components/joke.component.html'
 })
 export class JokeComponent implements OnInit, OnChanges {

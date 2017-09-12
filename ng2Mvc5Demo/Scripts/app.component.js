@@ -77,6 +77,9 @@ var JokeComponent = /** @class */ (function () {
     JokeComponent = __decorate([
         core_1.Component({
             selector: 'joke',
+            styleUrls: [
+                '../Styles/components/joke.component.css'
+            ],
             templateUrl: '../Templates/components/joke.component.html'
         })
     ], JokeComponent);
@@ -135,3 +138,4 @@ var AppComponent = /** @class */ (function () {
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+//# sourceMappingURL=app.component.js.map

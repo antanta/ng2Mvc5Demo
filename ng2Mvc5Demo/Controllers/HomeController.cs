@@ -12,5 +12,10 @@ namespace ng2Mvc5Demo.Controllers
         {
             return View();
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
     }
 }

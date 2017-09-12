@@ -154,6 +154,7 @@
     <Content Include="Scripts\systemjs.config.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Styles\app.component.css" />
+    <Content Include="Styles\components\joke.component.css" />
     <Content Include="Styles\components\joke.form.component.css" />
     <Content Include="Templates\app.component.html" />
     <Content Include="Templates\components\joke.component.html" />
@@ -171,6 +172,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="tsScripts\tsconfig.json" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
