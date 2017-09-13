@@ -1,4 +1,4 @@
-﻿import 'rxjs/Rx';
+﻿import 'rxjs/add/operator/toPromise';
 
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -10,6 +10,8 @@ import { BlockUIModule, BlockableUI } from 'primeng/primeng'
 
 import { ButtonModule, PanelModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
 
+import { Http } from '@angular/http';
+
 @Component({
     selector: 'register-form',
     styleUrls: [
@@ -17,21 +19,17 @@ import { ButtonModule, PanelModule, TabViewModule, CodeHighlighterModule } from 
     ],
     templateUrl: '../Templates/components/register.form.component.html'
 })
-export class RegisterFormComponent  {
+export class RegisterFormComponent {
     blockedDocument: boolean = false;
 
     searchField: FormControl;
-    public langs: string[];
+    public langs: Object[];
     public myform: FormGroup;
 
     counter: number = 0;
 
-    constructor() {
-        this.langs = [
-            'English',
-            'French',
-            'German',
-        ];
+    constructor(private http: Http) {
+        this.langs = [];
     }
 
     blockDocument() {
@@ -64,6 +62,7 @@ export class RegisterFormComponent  {
             console.log(e);
         });
 
+        this.getLanguages();
     }
 
     onSearchChange(e): void {
@@ -90,6 +89,21 @@ export class RegisterFormComponent  {
 
             console.log("Form Submitted!");
         }
+    }
+
+    getLanguages(): void {
+        var that = this;
+        this.http.get('api/RegisterForm/ListLanguages')
+            .toPromise()
+            .then(function (res) {
+                that.langs = res.json();
+
+                //var arr = $.map(res.json(), function (el) {
+                //    return el.Description;
+                //});
+            }).catch(function (err) {
+                console.error('Error occured');
+            });
     }
 }
 

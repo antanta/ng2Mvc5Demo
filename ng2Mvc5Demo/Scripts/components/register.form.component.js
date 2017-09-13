@@ -9,19 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("rxjs/Rx");
+require("rxjs/add/operator/toPromise");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var primeng_1 = require("primeng/primeng");
+var http_1 = require("@angular/http");
 var RegisterFormComponent = /** @class */ (function () {
-    function RegisterFormComponent() {
+    function RegisterFormComponent(http) {
+        this.http = http;
         this.blockedDocument = false;
         this.counter = 0;
-        this.langs = [
-            'English',
-            'French',
-            'German',
-        ];
+        this.langs = [];
     }
     RegisterFormComponent.prototype.blockDocument = function () {
         var _this = this;
@@ -50,6 +48,7 @@ var RegisterFormComponent = /** @class */ (function () {
             .subscribe(function (e) {
             console.log(e);
         });
+        this.getLanguages();
     };
     RegisterFormComponent.prototype.onSearchChange = function (e) {
     };
@@ -72,6 +71,19 @@ var RegisterFormComponent = /** @class */ (function () {
             console.log("Form Submitted!");
         }
     };
+    RegisterFormComponent.prototype.getLanguages = function () {
+        var that = this;
+        this.http.get('api/RegisterForm/ListLanguages')
+            .toPromise()
+            .then(function (res) {
+            that.langs = res.json();
+            //var arr = $.map(res.json(), function (el) {
+            //    return el.Description;
+            //});
+        }).catch(function (err) {
+            console.error('Error occured');
+        });
+    };
     RegisterFormComponent = __decorate([
         core_1.Component({
             selector: 'register-form',
@@ -80,7 +92,7 @@ var RegisterFormComponent = /** @class */ (function () {
             ],
             templateUrl: '../Templates/components/register.form.component.html'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.Http])
     ], RegisterFormComponent);
     return RegisterFormComponent;
 }());

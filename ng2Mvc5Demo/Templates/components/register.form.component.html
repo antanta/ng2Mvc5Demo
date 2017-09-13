@@ -40,7 +40,7 @@
                 formControlName="language">
 			<option value="" selected>Please select a language</option>
 			<option *ngFor="let lang of langs"
-			        [value]="lang">{{lang}}
+			        [value]="lang.Id">{{lang.Description}}
 			</option>
 		</select>
     </div>
