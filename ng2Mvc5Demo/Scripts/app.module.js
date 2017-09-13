@@ -11,22 +11,36 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
 var app_component_2 = require("./app.component");
+var register_form_component_1 = require("./components/register.form.component");
 /* Custom directives */
 var jokeHoverDirective_1 = require("./directives/jokeHoverDirective");
+/* Forms */
+var forms_1 = require("@angular/forms");
+/* PrimeNG */
+var animations_1 = require("@angular/platform-browser/animations"); //primeng
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent,
+            declarations: [
+                app_component_1.AppComponent,
                 app_component_2.JokeComponent,
                 app_component_2.JokeListComponent,
                 app_component_2.JokeFormComponent,
+                register_form_component_1.RegisterFormComponent,
                 jokeHoverDirective_1.JokeHoverDirective
             ],
-            imports: [platform_browser_1.BrowserModule],
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
+                animations_1.BrowserAnimationsModule //primeng
+            ],
             providers: [],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [
+                app_component_1.AppComponent
+            ]
         })
     ], AppModule);
     return AppModule;
