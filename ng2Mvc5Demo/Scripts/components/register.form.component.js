@@ -59,7 +59,6 @@ var RegisterFormComponent = /** @class */ (function () {
     RegisterFormComponent.prototype.onSubmit = function () {
         var that = this;
         if (this.myform.valid) {
-            debugger;
             that.blockedDocument = true;
             $.ajax({
                 url: 'api/RegisterForm/ProcessRegister',

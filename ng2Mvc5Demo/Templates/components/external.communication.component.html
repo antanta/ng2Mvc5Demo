@@ -1,0 +1,13 @@
+﻿<table>
+    <tr>
+        <td>
+            <label>Send message</label>
+        </td>
+        <td>
+            <input type="text" class="form-control" #message />
+        </td>
+        <td>
+            <button (click)="sendMessage(message.value)">Send message!</button>
+        </td>
+    </tr>
+</table>

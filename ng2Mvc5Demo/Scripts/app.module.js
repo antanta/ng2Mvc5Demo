@@ -14,6 +14,7 @@ var animations_1 = require("@angular/platform-browser/animations");
 var app_component_1 = require("./app.component");
 var app_component_2 = require("./app.component");
 var register_form_component_1 = require("./components/register.form.component");
+var external_communication_component_1 = require("./components/external.communication.component");
 /* Custom directives */
 var jokeHoverDirective_1 = require("./directives/jokeHoverDirective");
 /* Forms */
@@ -23,6 +24,8 @@ var primeng_1 = require("primeng/primeng");
 var primeng_2 = require("primeng/primeng");
 /* Reactive */
 require("rxjs/Rx");
+/* HTTP communication */
+var http_1 = require("@angular/http");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -34,6 +37,7 @@ var AppModule = /** @class */ (function () {
                 app_component_2.JokeListComponent,
                 app_component_2.JokeFormComponent,
                 register_form_component_1.RegisterFormComponent,
+                external_communication_component_1.ExternalCommunicationComponent,
                 jokeHoverDirective_1.JokeHoverDirective
             ],
             imports: [
@@ -47,7 +51,8 @@ var AppModule = /** @class */ (function () {
                 primeng_2.ButtonModule,
                 primeng_2.PanelModule,
                 primeng_2.TabViewModule,
-                primeng_2.CodeHighlighterModule
+                primeng_2.CodeHighlighterModule,
+                http_1.HttpModule
             ],
             providers: [],
             bootstrap: [

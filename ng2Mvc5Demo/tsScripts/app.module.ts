@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { JokeComponent, JokeListComponent, JokeFormComponent  } from './app.component';
 
 import { RegisterFormComponent } from './components/register.form.component';
+import { ExternalCommunicationComponent } from './components/external.communication.component';
+
 
 /* Custom directives */
 import { JokeHoverDirective } from './directives/jokeHoverDirective';
@@ -23,6 +25,9 @@ import { ButtonModule, PanelModule, TabViewModule, CodeHighlighterModule } from 
 /* Reactive */
 import 'rxjs/Rx';
 
+/* HTTP communication */
+import { HttpModule } from '@angular/http';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -30,6 +35,7 @@ import 'rxjs/Rx';
         JokeListComponent,
         JokeFormComponent,
         RegisterFormComponent,
+        ExternalCommunicationComponent,
 
         JokeHoverDirective
     ],
@@ -46,7 +52,9 @@ import 'rxjs/Rx';
         ButtonModule,
         PanelModule,
         TabViewModule,
-        CodeHighlighterModule
+        CodeHighlighterModule,
+
+        HttpModule
     ],
     providers: [],
     bootstrap: [

@@ -35,6 +35,5 @@ namespace ng2Mvc5Demo.Controllers
             return result;
         }
         #endregion
-
     }
 }
