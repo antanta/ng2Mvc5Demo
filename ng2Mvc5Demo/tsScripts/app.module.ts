@@ -2,6 +2,8 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { JokeComponent, JokeListComponent, JokeFormComponent  } from './app.component';
@@ -15,9 +17,11 @@ import { JokeHoverDirective } from './directives/jokeHoverDirective';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* PrimeNG */
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//primeng
 import { BlockUIModule, BlockableUI } from 'primeng/primeng';
+import { ButtonModule, PanelModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
 
+/* Reactive */
+import 'rxjs/Rx';
 
 @NgModule({
     declarations: [
@@ -33,7 +37,16 @@ import { BlockUIModule, BlockableUI } from 'primeng/primeng';
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        BrowserAnimationsModule//primeng
+        BrowserAnimationsModule,
+
+        //primeng
+        CommonModule,
+        BlockUIModule,
+
+        ButtonModule,
+        PanelModule,
+        TabViewModule,
+        CodeHighlighterModule
     ],
     providers: [],
     bootstrap: [

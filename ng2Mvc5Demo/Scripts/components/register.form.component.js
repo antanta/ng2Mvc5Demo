@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("rxjs/Rx");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var primeng_1 = require("primeng/primeng");
@@ -22,6 +23,13 @@ var RegisterFormComponent = /** @class */ (function () {
             'German',
         ];
     }
+    RegisterFormComponent.prototype.blockDocument = function () {
+        var _this = this;
+        this.blockedDocument = true;
+        setTimeout(function () {
+            _this.blockedDocument = false;
+        }, 3000);
+    };
     RegisterFormComponent.prototype.ngOnInit = function () {
         this.myform = new forms_1.FormGroup({
             name: new forms_1.FormGroup({
@@ -35,8 +43,15 @@ var RegisterFormComponent = /** @class */ (function () {
         this.myform.valueChanges.subscribe(function (x) {
             console.log(x);
         });
+        this.searchField = new forms_1.FormControl();
+        this.searchField.valueChanges
+            .debounceTime(400)
+            .distinctUntilChanged()
+            .subscribe(function (e) {
+            console.log(e);
+        });
     };
-    RegisterFormComponent.prototype.onFormChanged = function (e) {
+    RegisterFormComponent.prototype.onSearchChange = function (e) {
     };
     RegisterFormComponent.prototype.incrementCounter = function () {
         this.counter++;

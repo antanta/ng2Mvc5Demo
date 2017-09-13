@@ -9,6 +9,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var animations_1 = require("@angular/platform-browser/animations");
 var app_component_1 = require("./app.component");
 var app_component_2 = require("./app.component");
 var register_form_component_1 = require("./components/register.form.component");
@@ -17,7 +19,10 @@ var jokeHoverDirective_1 = require("./directives/jokeHoverDirective");
 /* Forms */
 var forms_1 = require("@angular/forms");
 /* PrimeNG */
-var animations_1 = require("@angular/platform-browser/animations"); //primeng
+var primeng_1 = require("primeng/primeng");
+var primeng_2 = require("primeng/primeng");
+/* Reactive */
+require("rxjs/Rx");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -35,7 +40,14 @@ var AppModule = /** @class */ (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
-                animations_1.BrowserAnimationsModule //primeng
+                animations_1.BrowserAnimationsModule,
+                //primeng
+                common_1.CommonModule,
+                primeng_1.BlockUIModule,
+                primeng_2.ButtonModule,
+                primeng_2.PanelModule,
+                primeng_2.TabViewModule,
+                primeng_2.CodeHighlighterModule
             ],
             providers: [],
             bootstrap: [

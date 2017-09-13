@@ -1,5 +1,4 @@
-﻿<form [formGroup]="myform" (ngSubmit)="onSubmit()" blockUI [blocked]="blocked">
-
+﻿<form [formGroup]="myform" (ngSubmit)="onSubmit()">
     <fieldset formGroupName="name">
         <div class="form-group">
             <label>First Name</label>
@@ -51,6 +50,12 @@
     <button type="submit">Submit</button>
     <button type="reset">Reset</button>
 </form>
+
+Search: <input type="search" [formControl]="searchField" />
+
+
+<p-blockUI [target]="pnl" [blocked]="blockedDocument"></p-blockUI>
+<button type="button" (click)="blockDocument()">Block</button>
 
 <pre>{{myform.value | json}}</pre>
 <pre>{{counter}}</pre>

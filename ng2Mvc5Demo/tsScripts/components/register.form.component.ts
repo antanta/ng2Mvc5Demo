@@ -1,7 +1,14 @@
-﻿import { Component } from '@angular/core';
+﻿import 'rxjs/Rx';
+
+import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BlockUIModule, BlockableUI } from 'primeng/primeng'
+
+import { ButtonModule, PanelModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
 
 @Component({
     selector: 'register-form',
@@ -10,9 +17,10 @@ import { BlockUIModule, BlockableUI } from 'primeng/primeng'
     ],
     templateUrl: '../Templates/components/register.form.component.html'
 })
-export class RegisterFormComponent /*implements BlockableUI*/  {
+export class RegisterFormComponent  {
     blockedDocument: boolean = false;
 
+    searchField: FormControl;
     public langs: string[];
     public myform: FormGroup;
 
@@ -24,6 +32,13 @@ export class RegisterFormComponent /*implements BlockableUI*/  {
             'French',
             'German',
         ];
+    }
+
+    blockDocument() {
+        this.blockedDocument = true;
+        setTimeout(() => {
+            this.blockedDocument = false;
+        }, 3000);
     }
 
     ngOnInit() {
@@ -40,9 +55,18 @@ export class RegisterFormComponent /*implements BlockableUI*/  {
         this.myform.valueChanges.subscribe(x => {
             console.log(x);
         })
+
+        this.searchField = new FormControl();
+        this.searchField.valueChanges
+            .debounceTime(400)
+            .distinctUntilChanged()
+            .subscribe(function (e) {
+            console.log(e);
+        });
+
     }
 
-    onFormChanged(e): void {
+    onSearchChange(e): void {
 
     }
 
