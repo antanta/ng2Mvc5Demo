@@ -1,8 +1,22 @@
-﻿<h1>Hello {{title}}</h1>
-<h2>My favorite skill is: {{myskills}}</h2>
-<p>Skill:</p>
-<ul>
-    <li *ngFor="let skl of skills; let i = index">
-        {{i + 1}}. {{ skl }}
+﻿<br />
+<form class="form-inline" (submit)="doSearch($event, search.value)">
+    <div class="form-group">
+        <input type="search"
+               class="form-control"
+               placeholder="Enter search string"
+               #search>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<div class="text-center">
+    <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item"
+        *ngFor="let track of searcher.results; let i = index;">
+        {{i + 1}} {{track.artist}} - {{track.track}}
     </li>
 </ul>

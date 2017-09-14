@@ -10,17 +10,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
+var http_1 = require("@angular/http");
+var SearchService_1 = require("./services/SearchService");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent],
-            imports: [platform_browser_1.BrowserModule],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
+            declarations: [
+                app_component_1.AppComponent
+            ],
+            imports: [
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                http_1.JsonpModule
+            ],
+            providers: [
+                SearchService_1.SearchService
+            ],
+            bootstrap: [
+                app_component_1.AppComponent
+            ]
         })
     ], AppModule);
     return AppModule;
 }());
 exports.AppModule = AppModule;
+//# sourceMappingURL=app.module.js.map

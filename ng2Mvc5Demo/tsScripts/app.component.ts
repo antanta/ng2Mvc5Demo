@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
+import { SearchService } from './services/SearchService'
 
 @Component({
     selector: 'my-app',
-    //template: '<h1>Hello {{title}}</h1>',
-    templateUrl: '../Templates/app.component.html',
-    //styles: ['h2 {color: red}'],
-    styleUrls: ['../Styles/app.component.css']
+    templateUrl: '../Templates/app.component.html'
 })
 export class AppComponent {
-    title = 'ASP.NET MVC 5 with Angular 4';
-    skills = ['MVC 5', 'Angular 2', 'TypeScript', 'Visual Studio 2015'];
-    myskills = this.skills[3];
+    private searcher: SearchService;
+    private loading: boolean;
+
+    constructor(searcher: SearchService) {
+        this.searcher = searcher;
+    }
+
+    doSearch(event: Event, term: string) {
+        this.loading = true;
+        this.searcher.search(term).then(() => { this.loading = false });
+        event.preventDefault();
+    }
 }
