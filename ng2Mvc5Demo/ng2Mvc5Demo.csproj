@@ -165,7 +165,11 @@
     <Content Include="Scripts\systemjs.config.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Styles\app.component.css" />
+    <Content Include="Styles\components\home.component.css" />
     <Content Include="Templates\app.component.html" />
+    <Content Include="Templates\components\app.header.component.html" />
+    <Content Include="Templates\components\home.component.html" />
+    <Content Include="Templates\components\search.component.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,13 +183,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="tsScripts\tsconfig.json" />
+    <Content Include="Styles\components\search.component.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Styles\components\" />
-    <Folder Include="Templates\components\" />
-    <Folder Include="tsScripts\components\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -197,6 +199,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="tsScripts\app.component.ts" />
     <TypeScriptCompile Include="tsScripts\app.module.ts" />
+    <TypeScriptCompile Include="tsScripts\components\app.header.component.ts" />
+    <TypeScriptCompile Include="tsScripts\components\home.component.ts" />
+    <TypeScriptCompile Include="tsScripts\components\lazy\lazy.module.ts" />
+    <TypeScriptCompile Include="tsScripts\components\lazy\lazy.component.ts" />
+    <TypeScriptCompile Include="tsScripts\components\search.component.ts" />
     <TypeScriptCompile Include="tsScripts\main.ts" />
     <TypeScriptCompile Include="tsScripts\services\SearchItem.ts" />
     <TypeScriptCompile Include="tsScripts\services\SearchService.ts" />
